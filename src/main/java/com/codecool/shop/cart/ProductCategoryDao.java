@@ -1,6 +1,6 @@
 package com.codecool.shop.cart;
 
-import com.codecool.shop.catalog.model.ProductCategory;
+import com.codecool.shop.cart.model.ProductCategory;
 
 import java.util.List;
 

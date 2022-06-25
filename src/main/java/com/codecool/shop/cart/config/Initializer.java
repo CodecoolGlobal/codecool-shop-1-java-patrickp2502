@@ -1,14 +1,14 @@
 package com.codecool.shop.cart.config;
 
-import com.codecool.shop.catalog.ProductCategoryDao;
-import com.codecool.shop.catalog.ProductDao;
-import com.codecool.shop.catalog.SupplierDao;
-import com.codecool.shop.catalog.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.catalog.implementation.ProductDaoMem;
-import com.codecool.shop.catalog.implementation.SupplierDaoMem;
-import com.codecool.shop.catalog.model.Product;
-import com.codecool.shop.catalog.model.ProductCategory;
-import com.codecool.shop.catalog.model.Supplier;
+import com.codecool.shop.cart.ProductCategoryDao;
+import com.codecool.shop.cart.ProductDao;
+import com.codecool.shop.cart.SupplierDao;
+import com.codecool.shop.cart.implementation.ProductCategoryDaoMem;
+import com.codecool.shop.cart.implementation.ProductDaoMem;
+import com.codecool.shop.cart.implementation.SupplierDaoMem;
+import com.codecool.shop.cart.model.Product;
+import com.codecool.shop.cart.model.ProductCategory;
+import com.codecool.shop.cart.model.Supplier;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

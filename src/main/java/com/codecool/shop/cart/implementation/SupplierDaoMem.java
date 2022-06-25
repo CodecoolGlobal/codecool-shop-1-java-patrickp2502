@@ -1,7 +1,7 @@
 package com.codecool.shop.cart.implementation;
 
-import com.codecool.shop.catalog.SupplierDao;
-import com.codecool.shop.catalog.model.Supplier;
+import com.codecool.shop.cart.SupplierDao;
+import com.codecool.shop.cart.model.Supplier;
 
 import java.util.ArrayList;
 import java.util.List;

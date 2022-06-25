@@ -1,9 +1,9 @@
 package com.codecool.shop.cart.service;
 
-import com.codecool.shop.catalog.ProductCategoryDao;
-import com.codecool.shop.catalog.ProductDao;
-import com.codecool.shop.catalog.model.Product;
-import com.codecool.shop.catalog.model.ProductCategory;
+import com.codecool.shop.cart.ProductCategoryDao;
+import com.codecool.shop.cart.ProductDao;
+import com.codecool.shop.cart.model.Product;
+import com.codecool.shop.cart.model.ProductCategory;
 
 import java.util.List;
 
