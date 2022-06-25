@@ -61,15 +61,15 @@
     margin: 0 0 11px;
 }
 .filter-container {
-    background-color: lightgray;
     height: 4em;
     margin: auto;
     max-width: 600px;
     display: flex;
-    padding: 1em;
+
 }
 
 .filter-items {
     display: inline-flex;
-    margin: auto;
+    margin-left: 1em;
+
 }

@@ -45,27 +45,31 @@ public class CatalogController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
+
         String parameterCategoryId = req.getParameter("category");
         int categoryId = DEFAULT_CATEGORY_ID;
+        String selection = categoryService.findProductCategory(categoryId).getName();
         if (Validator.isStringNumber(parameterCategoryId)) {
             categoryId = Integer.parseInt(parameterCategoryId);
+            selection = categoryService.findProductCategory(categoryId).getName();
         }
 
         String parameterSupplierId = req.getParameter("supplier");
         int supplierId = -1;
         if (Validator.isStringNumber(parameterSupplierId)) {
             supplierId = Integer.parseInt(parameterSupplierId);
+            selection = supplierService.findSupplier(supplierId).getName();
         }
 
-
-        //setting up context
-        context.setVariable("category", productService.getProductCategory(categoryId));
-        context.setVariable("categories", categoryService.getProductCategories());
-        context.setVariable("suppliers", supplierService.getSuppliers());
 
         //setting up products to present
         List<Product> products = supplierId > -1 ?
                 productService.getProductsForSupplier(supplierId) : productService.getProductsForCategory(categoryId);
+
+        //setting up context
+        context.setVariable("categories", categoryService.getProductCategories());
+        context.setVariable("suppliers", supplierService.getSuppliers());
+        context.setVariable("selection", selection);
         context.setVariable("products", products);
 
         // // Alternative setting of the template context

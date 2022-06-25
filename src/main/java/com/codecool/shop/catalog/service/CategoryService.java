@@ -13,6 +13,10 @@ public class CategoryService {
         this.productCategoryDao = productCategoryDao;
     }
 
+    public ProductCategory findProductCategory(int productCategoryId) {
+        return productCategoryDao.find(productCategoryId);
+    }
+
     public List<ProductCategory> getProductCategories() {
         return productCategoryDao.getAll();
     }

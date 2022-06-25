@@ -44,7 +44,8 @@ public class CartTransferController extends HttpServlet {
         json.addProperty("session", sessionId);
         json.addProperty("id", parameterProductId);
         json.addProperty("name", product.getName());
-        json.addProperty("price", product.getPrice());
+        json.addProperty("price-value", product.getDefaultPrice());
+        json.addProperty("currency", product.getDefaultCurrency().toString());
         System.out.println("json = " + json);
         transmitToCart(json);
     }

@@ -19,6 +19,10 @@ public class SupplierService {
         return supplierDao.getAll();
     }
 
+    public Supplier findSupplier(int supplierId) {
+        return supplierDao.find(supplierId);
+    }
+
 
 
 }
