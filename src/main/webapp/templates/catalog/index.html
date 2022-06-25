@@ -25,6 +25,8 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
 </head>
 
@@ -33,8 +35,11 @@
     <div class="jumbotron text-center">
         <h1>Codecool Shop</h1>
     </div>
-
-
+    <header>
+        <a  id="cart-anchor" th:href="@{/cart/show}">
+            <img  src="https://img.icons8.com/color/96/000000/shopping-cart--v1.png"/>
+        </a>
+    </header>
     <div class="filter-container">
         <div class="filter-label">category</div>
         <div class="filter-items" th:each="cat,iterStat : ${categories}">
