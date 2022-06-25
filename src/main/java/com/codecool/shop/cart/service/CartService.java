@@ -1,8 +1,10 @@
 package com.codecool.shop.cart.service;
 
 import com.codecool.shop.cart.CartDao;
+import com.codecool.shop.cart.model.Cart;
 import com.codecool.shop.cart.model.Product;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class CartService {
@@ -17,6 +19,10 @@ public class CartService {
     }
 
     public int getCount(int id) {
-        return cartDAO.
+        return cartDAO.getProductCount(id);
+    }
+
+    public Cart getCart() {
+        return cartDAO.getCart();
     }
 }

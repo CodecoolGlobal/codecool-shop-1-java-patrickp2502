@@ -1,5 +1,6 @@
 package com.codecool.shop.cart;
 
+import com.codecool.shop.cart.model.Cart;
 import com.codecool.shop.cart.model.Product;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface CartDao {
     List<Product> getAll();
 
     int getProductCount(int id);
+
+    Cart getCart();
 }

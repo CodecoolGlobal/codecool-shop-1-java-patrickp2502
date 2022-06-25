@@ -36,11 +36,11 @@
 
 <div class="container">
     <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
+        <strong th:text="${cart.getTotalPrice()}">Total cost</strong>
     </div>
 
     <div id="cartItems" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${cartItems}">
+        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${cart.getProducts()}">
             <div class="card">
                 <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
                 <div class="card-header">
@@ -50,12 +50,13 @@
                 <div class="card-body">
                     <div class="card-text">
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
-                        <p class="lead" th:text="${cart.getCount(prod)}">1</p>
-                        <p class="lead" th:text="${cart.getTotalPriceOfProduct(prod)}">100 USD</p>
+                        <p class="lead" th:text="${cart.getCountOfSingleProduct(prod.getId())}">1</p>
+                        <p class="lead" th:text="${cart.getSumOfOneProduct(prod.getId())}">100 USD</p>
                     </div>
                 </div>
             </div>
         </div>
+        <p th:text="${cart.getTotalPrice()}">Total cost</p>
     </div>
 
 </div>
