@@ -1,14 +1,11 @@
 package com.codecool.shop.cart.model;
 
-import com.codecool.shop.catalog.model.BaseModel;
-import com.codecool.shop.catalog.model.Product;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductCategory extends BaseModel {
     private String department;
-    private List<com.codecool.shop.catalog.model.Product> products;
+    private List<com.codecool.shop.cart.model.Product> products;
 
     public ProductCategory(String name, String department, String description) {
         super(name);
@@ -24,12 +21,12 @@ public class ProductCategory extends BaseModel {
         this.department = department;
     }
 
-    public void setProducts(ArrayList<com.codecool.shop.catalog.model.Product> products) {
-        this.products = products;
+    public List<com.codecool.shop.cart.model.Product> getProducts() {
+        return this.products;
     }
 
-    public List<com.codecool.shop.catalog.model.Product> getProducts() {
-        return this.products;
+    public void setProducts(ArrayList<com.codecool.shop.cart.model.Product> products) {
+        this.products = products;
     }
 
     public void addProduct(Product product) {

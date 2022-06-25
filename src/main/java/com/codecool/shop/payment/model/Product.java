@@ -1,9 +1,5 @@
 package com.codecool.shop.payment.model;
 
-import com.codecool.shop.catalog.model.BaseModel;
-import com.codecool.shop.catalog.model.ProductCategory;
-import com.codecool.shop.catalog.model.Supplier;
-
 import java.math.BigDecimal;
 import java.util.Currency;
 
