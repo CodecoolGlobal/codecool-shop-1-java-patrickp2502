@@ -1,8 +1,10 @@
 package com.codecool.shop.catalog.config;
 
+import com.codecool.shop.catalog.CartDao;
 import com.codecool.shop.catalog.ProductCategoryDao;
 import com.codecool.shop.catalog.ProductDao;
 import com.codecool.shop.catalog.SupplierDao;
+import com.codecool.shop.catalog.implementation.CartDaoMem;
 import com.codecool.shop.catalog.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.catalog.implementation.ProductDaoMem;
 import com.codecool.shop.catalog.implementation.SupplierDaoMem;
@@ -23,6 +25,7 @@ public class Initializer implements ServletContextListener {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
+        CartDao cartDataStore = CartDaoMem.getInstance();
 
         //setting up a new supplier
         Supplier amazon = new Supplier("Amazon", "Digital content and services");
@@ -55,5 +58,9 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
         productDataStore.add(new Product("LG OLED 65C17LB", new BigDecimal("1487"), "USD", "AI Picture Pro und AI Sound Pro, Dolby Atmos-fähigem 2.2-Soundsyste", tv, lg));
         productDataStore.add(new Product("MSI GeForce RTX 3070 Gaming Z Trio", new BigDecimal("691.80"), "USD", "WOOOWI Grahpic card brrruuuuum", graphicCard, msi));
+
+        //setting up cart with test data
+        cartDataStore.add(1);
+        cartDataStore.add(3);
     }
 }
