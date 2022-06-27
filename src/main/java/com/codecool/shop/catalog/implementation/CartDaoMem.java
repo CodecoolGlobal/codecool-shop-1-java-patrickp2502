@@ -2,16 +2,16 @@ package com.codecool.shop.catalog.implementation;
 
 import com.codecool.shop.catalog.CartDao;
 import com.codecool.shop.catalog.model.Cart;
-import com.codecool.shop.catalog.model.Product;
+import com.codecool.shop.catalog.model.CartItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartDaoMem implements CartDao {
 
     private static CartDaoMem instance = null;
-    Cart cart = new Cart();
-    ProductDaoMem productDaoMem = ProductDaoMem.getInstance();
 
+    List<Cart> activeCarts = new ArrayList<>();
     private CartDaoMem() {
     }
 
@@ -24,32 +24,48 @@ public class CartDaoMem implements CartDao {
 
 
     @Override
-    public void add(int id) {
-        cart.add(productDaoMem.find(id));
+    public void add(CartItem cartItem, String sessionId) {
+        cartOfSession(sessionId).add(cartItem);
     }
 
     @Override
-    public Product find(int id) {
-        return cart.findProductBy(id);
+    public CartItem find(int id, String sessionId) {
+        return cartOfSession(sessionId).findProductBy(id);
     }
 
     @Override
-    public void remove(int id) {
-        cart.removeSingleProduct(id);
+    public void remove(int id, String sessionId) {
+        cartOfSession(sessionId).removeSingleProduct(id);
     }
 
     @Override
-    public List<Product> getAll() {
-        return cart.getProducts();
+    public Cart getCart(String sessionId) {
+        Cart requestedCart;
+        if(sessionHasACart(sessionId)) {
+            requestedCart = cartOfSession(sessionId);
+        } else {
+            requestedCart = createAndGetCartForSession(sessionId);
+        }
+        return requestedCart;
     }
 
-    @Override
-    public int getProductCount(int id) {
-        return cart.getCountOfSingleProduct(id);
+    private Cart createAndGetCartForSession(String sessionId) {
+        Cart requestedCart = new Cart();
+        requestedCart.setSessionId(sessionId);
+        return requestedCart;
     }
 
-    @Override
-    public Cart getCart() {
-        return this.cart;
+    private Cart cartOfSession(String sessionId) {
+        return activeCarts
+                .stream()
+                .filter(cart -> cart.getSessionId().equals(sessionId))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private boolean sessionHasACart(String sessionId) {
+        return activeCarts
+                .stream()
+                .anyMatch(cart -> cart.getSessionId().equals(sessionId));
     }
 }
