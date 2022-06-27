@@ -1,4 +1,4 @@
-package com.codecool.shop.catalog.model;
+package com.codecool.shop.catalog.dao.model;
 
 import java.util.ArrayList;
 import java.util.List;

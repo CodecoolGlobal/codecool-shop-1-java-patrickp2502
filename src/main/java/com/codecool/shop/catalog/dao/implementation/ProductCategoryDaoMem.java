@@ -1,8 +1,8 @@
-package com.codecool.shop.catalog.implementation;
+package com.codecool.shop.catalog.dao.implementation;
 
 
-import com.codecool.shop.catalog.ProductCategoryDao;
-import com.codecool.shop.catalog.model.ProductCategory;
+import com.codecool.shop.catalog.dao.ProductCategoryDao;
+import com.codecool.shop.catalog.dao.model.ProductCategory;
 
 import java.util.ArrayList;
 import java.util.List;

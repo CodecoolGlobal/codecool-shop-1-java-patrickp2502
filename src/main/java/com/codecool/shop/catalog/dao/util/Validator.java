@@ -1,4 +1,4 @@
-package com.codecool.shop.catalog.util;
+package com.codecool.shop.catalog.dao.util;
 
 public class Validator {
 
