@@ -1,8 +1,8 @@
-package com.codecool.shop.catalog.implementation;
+package com.codecool.shop.cart.implementation;
 
-import com.codecool.shop.catalog.CartDao;
-import com.codecool.shop.catalog.model.Cart;
-import com.codecool.shop.catalog.model.CartItem;
+import com.codecool.shop.cart.CartDao;
+import com.codecool.shop.cart.model.Cart;
+import com.codecool.shop.cart.model.CartItem;
 
 import java.util.ArrayList;
 import java.util.List;

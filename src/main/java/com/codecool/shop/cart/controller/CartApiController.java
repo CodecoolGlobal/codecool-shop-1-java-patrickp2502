@@ -1,9 +1,9 @@
-package com.codecool.shop.catalog.controller;
+package com.codecool.shop.cart.controller;
 
 
-import com.codecool.shop.catalog.CartDao;
-import com.codecool.shop.catalog.implementation.CartDaoMem;
-import com.codecool.shop.catalog.model.CartItem;
+import com.codecool.shop.cart.CartDao;
+import com.codecool.shop.cart.implementation.CartDaoMem;
+import com.codecool.shop.cart.model.CartItem;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

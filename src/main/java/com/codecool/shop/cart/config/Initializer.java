@@ -1,8 +1,7 @@
-package com.codecool.shop.catalog.config;
+package com.codecool.shop.cart.config;
 
-import com.codecool.shop.catalog.CartDao;
-import com.codecool.shop.catalog.implementation.CartDaoMem;
-import com.codecool.shop.catalog.model.CartItem;
+import com.codecool.shop.cart.CartDao;
+import com.codecool.shop.cart.implementation.CartDaoMem;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

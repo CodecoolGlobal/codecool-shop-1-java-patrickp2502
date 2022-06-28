@@ -1,4 +1,4 @@
-package com.codecool.shop.catalog.config;
+package com.codecool.shop.cart.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;

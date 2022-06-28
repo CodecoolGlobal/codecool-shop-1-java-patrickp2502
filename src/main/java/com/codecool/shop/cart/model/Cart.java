@@ -1,4 +1,4 @@
-package com.codecool.shop.catalog.model;
+package com.codecool.shop.cart.model;
 
 import lombok.Getter;
 import lombok.Setter;

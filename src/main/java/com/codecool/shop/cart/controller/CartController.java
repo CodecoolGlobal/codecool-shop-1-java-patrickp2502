@@ -1,9 +1,9 @@
-package com.codecool.shop.catalog.controller;
+package com.codecool.shop.cart.controller;
 
-import com.codecool.shop.catalog.CartDao;
-import com.codecool.shop.catalog.config.TemplateEngineUtil;
-import com.codecool.shop.catalog.implementation.CartDaoMem;
-import com.codecool.shop.catalog.service.CartService;
+import com.codecool.shop.cart.CartDao;
+import com.codecool.shop.cart.config.TemplateEngineUtil;
+import com.codecool.shop.cart.implementation.CartDaoMem;
+import com.codecool.shop.cart.service.CartService;
 import com.google.gson.JsonObject;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -41,6 +41,7 @@ public class CartController extends HttpServlet {
         JsonObject json = new JsonObject();
         json.addProperty("session", sessionId);
         json.addProperty("totalPrice", totalPrice);
+        System.out.println("json = " + json);
         transmitToCheckOut(json);
     }
 

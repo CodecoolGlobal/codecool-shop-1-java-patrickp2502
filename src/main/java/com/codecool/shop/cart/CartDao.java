@@ -1,9 +1,7 @@
-package com.codecool.shop.catalog;
+package com.codecool.shop.cart;
 
-import com.codecool.shop.catalog.model.Cart;
-import com.codecool.shop.catalog.model.CartItem;
-
-import java.util.List;
+import com.codecool.shop.cart.model.Cart;
+import com.codecool.shop.cart.model.CartItem;
 
 public interface CartDao {
 
