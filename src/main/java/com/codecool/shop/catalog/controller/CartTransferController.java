@@ -1,12 +1,12 @@
 package com.codecool.shop.catalog.controller;
 
-import com.codecool.shop.catalog.dao.ProductCategoryDao;
-import com.codecool.shop.catalog.dao.ProductDao;
-import com.codecool.shop.catalog.dao.SupplierDao;
-import com.codecool.shop.catalog.dao.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.catalog.dao.implementation.ProductDaoMem;
-import com.codecool.shop.catalog.dao.implementation.SupplierDaoMem;
-import com.codecool.shop.catalog.dao.model.Product;
+import com.codecool.shop.catalog.ProductCategoryDao;
+import com.codecool.shop.catalog.ProductDao;
+import com.codecool.shop.catalog.SupplierDao;
+import com.codecool.shop.catalog.implementation.ProductCategoryDaoMem;
+import com.codecool.shop.catalog.implementation.ProductDaoMem;
+import com.codecool.shop.catalog.implementation.SupplierDaoMem;
+import com.codecool.shop.catalog.model.Product;
 import com.codecool.shop.catalog.service.ProductService;
 import com.codecool.shop.catalog.util.Validator;
 import com.codecool.shop.config.RouteConfiguration;
@@ -77,23 +77,5 @@ public class CartTransferController extends HttpServlet {
 
 
 
-
-/*
-    private void transmitToCart(JsonObject jsonObject) {
-        try {
-            URL url = new URL("http://0.0.0.0:8080/api/cart");
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json");
-            con.setDoOutput(true);
-            OutputStream out = con.getOutputStream();
-            byte[] input = jsonObject.toString().getBytes(StandardCharsets.UTF_8);
-            out.write(input, 0, input.length);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-*/
 
 }
