@@ -41,7 +41,6 @@ public class CartController extends HttpServlet {
         JsonObject json = new JsonObject();
         json.addProperty("session", sessionId);
         json.addProperty("totalPrice", totalPrice);
-        System.out.println("json = " + json);
         transmitToCheckOut(json);
     }
 

@@ -37,7 +37,6 @@ public class CartTransferController extends HttpServlet {
         ProductService productService = new ProductService(productDao, productCategoryDao, supplierDao);
 
         String sessionId = req.getRequestedSessionId();
-        System.out.println("sessionId = " + sessionId);
         String parameterProductId = req.getParameter("id");
         if (!Validator.isStringNumber(parameterProductId)) {
             return;
@@ -50,7 +49,7 @@ public class CartTransferController extends HttpServlet {
         json.addProperty("name", product.getName());
         json.addProperty("price-value", product.getDefaultPrice());
         json.addProperty("currency", product.getDefaultCurrency().toString());
-        System.out.println("json = " + json);
+        System.out.println("json from catalog to cart API: = " + json);
         transmitToCart(json);
         resp.sendRedirect("/");
     }

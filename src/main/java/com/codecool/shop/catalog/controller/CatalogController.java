@@ -47,7 +47,6 @@ public class CatalogController extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
         HttpSession session = req.getSession(true);
-        System.out.println(session.getId());
 
 
         String parameterCategoryId = req.getParameter("category");
