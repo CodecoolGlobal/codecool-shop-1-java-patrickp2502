@@ -5,12 +5,17 @@ import com.codecool.shop.cart.CartDao;
 import com.codecool.shop.cart.implementation.CartDaoMem;
 import com.codecool.shop.cart.model.Cart;
 import com.codecool.shop.cart.model.CartItem;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONObject;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 
@@ -19,17 +24,15 @@ public class CartApiController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println("TEST before cartDao declaring");
+        String data = IOUtils.toString(req.getInputStream(), StandardCharsets.UTF_8);
+        //parses Json string to Json Object, so you can access like a hashmap
+        JSONObject jsonObject = new JSONObject(data);
+
         CartDao cartDaoDataStorage = CartDaoMem.getInstance();
-        System.out.println("TEST after cartDao declaring");
-        int id = Integer.parseInt(Arrays.toString(req.getParameterValues("id")));
-        System.out.println("id = " + id);
-        double price = Double.parseDouble(Arrays.toString(req.getParameterValues("price")));
-        System.out.println("price = " + price);
-        String name = Arrays.toString(req.getParameterValues("name"));
-        System.out.println("name = " + name);
-        String sessionId = Arrays.toString(req.getParameterValues("session"));
-        System.out.println("sessionId = " + sessionId);
+        int id = jsonObject.getInt("id");
+        double price = jsonObject.getDouble("price-value");
+        String name = jsonObject.getString("name");
+        String sessionId = jsonObject.getString("session");
 
 //        get Cart of this Session
 //        ?does a cartDaoMem hold a List of all active carts?
@@ -37,6 +40,10 @@ public class CartApiController extends HttpServlet {
 //        add CartItem into the cart of the Session
         cartDaoDataStorage.getCart(sessionId).add(cartItem);
 //        cartDaoDataStorage.getCart().add(cartItem);
+
+        System.out.println("Cart:" + cartDaoDataStorage.getCart(sessionId));
+        resp.sendRedirect("/");
+
     }
 
 }
