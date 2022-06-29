@@ -1,4 +1,4 @@
-package com.codecool.shop.catalog.model;
+package com.codecool.shop.catalog.dao.model;
 
 import java.math.BigDecimal;
 import java.util.Currency;
