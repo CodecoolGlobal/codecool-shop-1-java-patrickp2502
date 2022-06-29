@@ -1,13 +1,13 @@
 package com.codecool.shop.catalog.controller;
 
-import com.codecool.shop.catalog.ProductCategoryDao;
-import com.codecool.shop.catalog.ProductDao;
-import com.codecool.shop.catalog.SupplierDao;
-import com.codecool.shop.catalog.config.TemplateEngineUtil;
-import com.codecool.shop.catalog.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.catalog.implementation.ProductDaoMem;
-import com.codecool.shop.catalog.implementation.SupplierDaoMem;
-import com.codecool.shop.catalog.model.Product;
+import com.codecool.shop.catalog.dao.ProductCategoryDao;
+import com.codecool.shop.catalog.dao.ProductDao;
+import com.codecool.shop.catalog.dao.SupplierDao;
+import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.catalog.dao.implementation.ProductCategoryDaoMem;
+import com.codecool.shop.catalog.dao.implementation.ProductDaoMem;
+import com.codecool.shop.catalog.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.catalog.dao.model.Product;
 import com.codecool.shop.catalog.service.CategoryService;
 import com.codecool.shop.catalog.service.ProductService;
 import com.codecool.shop.catalog.service.SupplierService;
