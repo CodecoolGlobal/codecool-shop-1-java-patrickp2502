@@ -1,9 +1,9 @@
 package com.codecool.shop.cart.controller;
 
 import com.codecool.shop.cart.CartDao;
-import com.codecool.shop.cart.config.TemplateEngineUtil;
 import com.codecool.shop.cart.implementation.CartDaoMem;
 import com.codecool.shop.cart.service.CartService;
+import com.codecool.shop.config.TemplateEngineUtil;
 import com.google.gson.JsonObject;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -46,7 +46,7 @@ public class CartController extends HttpServlet {
 
     private void transmitToCheckOut(JsonObject jsonObject) {
         try {
-            URL url = new URL("/api/checkout");
+            URL url = new URL("http://0.0.0.0:8080/api/checkout");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
@@ -54,6 +54,8 @@ public class CartController extends HttpServlet {
             OutputStream out = connection.getOutputStream();
             byte[] input = jsonObject.toString().getBytes(StandardCharsets.UTF_8);
             out.write(input, 0, input.length);
+            out.flush();
+            connection.disconnect();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
