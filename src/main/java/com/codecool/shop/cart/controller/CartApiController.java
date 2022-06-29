@@ -5,8 +5,6 @@ import com.codecool.shop.cart.CartDao;
 import com.codecool.shop.cart.implementation.CartDaoMem;
 import com.codecool.shop.cart.model.Cart;
 import com.codecool.shop.cart.model.CartItem;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 
@@ -16,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 
 @WebServlet(urlPatterns = {"/api/cart"}, loadOnStartup = 2)
@@ -37,11 +34,15 @@ public class CartApiController extends HttpServlet {
 //        get Cart of this Session
 //        ?does a cartDaoMem hold a List of all active carts?
         CartItem cartItem = new CartItem(id, price, name);
+        System.out.println("id = " + id);
+        System.out.println("price = " + price);
+        System.out.println("name = " + name);
+        System.out.println("cartItem = " + cartItem);
 //        add CartItem into the cart of the Session
-        cartDaoDataStorage.getCart(sessionId).add(cartItem);
-//        cartDaoDataStorage.getCart().add(cartItem);
+        Cart cart = cartDaoDataStorage.getCart(sessionId);
+        cart.add(cartItem);
 
-        System.out.println("Cart:" + cartDaoDataStorage.getCart(sessionId));
+        System.out.println("Cart:" + cart);
         resp.sendRedirect("/");
 
     }

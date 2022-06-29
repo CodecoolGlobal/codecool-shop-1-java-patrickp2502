@@ -32,14 +32,21 @@ public class Cart {
     }
 
     public void add(CartItem cartItem) {
-        if (cart.contains(cartItem)) {
+        if (hasProductWithSameId(cartItem.getId())) {
+            System.out.println("In cart.contains(cartItem)");
             updateCount(cartItem.getId(), 1);
             updateTotalPrice(cartItem.getId(), 1);
         } else {
+            System.out.println("In not cart.contains(cartItem)");
             cartItem.setCount(1);
             cartItem.setTotalPrice(cartItem.getPrice());
             cart.add(cartItem);
         }
+    }
+
+    public boolean hasProductWithSameId(int id) {
+        return cart.stream()
+                .anyMatch(item -> item.getId() == id);
     }
 
     private void updateTotalPrice(int id, int howOften) {

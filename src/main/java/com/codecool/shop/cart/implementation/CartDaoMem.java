@@ -12,6 +12,7 @@ public class CartDaoMem implements CartDao {
     private static CartDaoMem instance = null;
 
     List<Cart> activeCarts = new ArrayList<>();
+
     private CartDaoMem() {
     }
 
@@ -41,11 +42,12 @@ public class CartDaoMem implements CartDao {
     @Override
     public Cart getCart(String sessionId) {
         Cart requestedCart;
-        if(sessionHasACart(sessionId)) {
+        if (sessionHasACart(sessionId)) {
             requestedCart = cartOfSession(sessionId);
         } else {
             requestedCart = createAndGetCartForSession(sessionId);
         }
+        activeCarts.add(requestedCart);
         return requestedCart;
     }
 
