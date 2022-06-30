@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 
 @WebServlet(urlPatterns = {"/checkout"}, loadOnStartup = 5)
 public class CheckoutController extends HttpServlet {
@@ -18,9 +20,10 @@ public class CheckoutController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TemplateEngine templateEngine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-
+        String totalSumString = req.getHeader("totalPrice");
+        BigDecimal totalSum = new BigDecimal(totalSumString);
+        context.setVariable("totalSum", totalSum);
         templateEngine.process("checkout/index.html", context, resp.getWriter());
-
 
     }
 
