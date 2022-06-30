@@ -31,7 +31,6 @@ public class CheckoutController extends HttpServlet {
 
         templateEngine.process("checkout/index.html", context, resp.getWriter());
 
-
     }
 
 

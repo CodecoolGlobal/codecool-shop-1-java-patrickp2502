@@ -37,13 +37,42 @@
 </div>
 
 <div class="container">
-    <div class="card">
-        <strong th:text="${'Total cost ' + cart.getTotalPrice()}">Total cost</strong>
-    </div>
 
     <div id="cartItems" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${cart.getCart()}">
+            <div class="row mb-4 d-flex justify-content-between align-items-center">
+                <div class="col-md-2 col-lg-2 col-xl-2">
+                    <img class="img-fluid rounded-3" src="http://placehold.it/400x250/000/fff"
+                    th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="productPicture"/>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3">
+                    <h4 class="card-title" th:text="${prod.name}">Product name</h4>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                    <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                        <i class="fas fa-minus"></i>
+                    </button>
+
+                    <input id="form1" min="1" name="quantity" th:value="${cart.getCountOfSingleItem(prod.getId())}" type="number"
+                    class="form-control form-control-sm" />
+
+                    <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                    <h6 class="mb-0" th:text="${prod.getTotalPrice()}">default value</h6>
+                </div>
+                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                    <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                </div>
+            </div>
             <div class="card">
+                <strong th:text="${'Total cost ' + cart.getTotalPrice()}">Total cost</strong>
+            </div>
+            <!-- <div class="card">
                 <img class="" src="http://placehold.it/400x250/000/fff"
                      th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 <div class="card-header">
@@ -56,12 +85,12 @@
                         <b class="lead" th:text="${prod.getTotalPrice()}">100 USD</b>
                         <input type="number" th:value="${cart.getCountOfSingleItem(prod.getId())}">
 
-                        <!-- Add button with remove functionality or count bar with lower and add (+ and -) -->
+                         Add button with remove functionality or count bar with lower and add (+ and -)
 
 
                     </div>
                 </div>
-            </div>
+             </div> -->
         </div>
     </div>
     <div><a href="/">continue shopping</a></div>
