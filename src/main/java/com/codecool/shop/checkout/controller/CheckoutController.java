@@ -2,11 +2,13 @@ package com.codecool.shop.checkout.controller;
 
 import com.codecool.shop.config.RouteConfiguration;
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.google.gson.JsonParser;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.json.JSONObject;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -16,7 +18,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 
 @WebServlet(urlPatterns = {"/checkout"}, loadOnStartup = 5)
 public class CheckoutController extends HttpServlet {
@@ -28,7 +32,6 @@ public class CheckoutController extends HttpServlet {
         String sessionId = req.getRequestedSessionId();
         double cartValue = fetchCartValue(sessionId);
         context.setVariable("value", cartValue);
-
         templateEngine.process("checkout/index.html", context, resp.getWriter());
 
     }
@@ -44,9 +47,13 @@ public class CheckoutController extends HttpServlet {
             HttpGet request = new HttpGet(builder.build());
             HttpResponse response = client.execute(request);
 
+            InputStream reader = response.getEntity().getContent();
+            String jsonString = new String(reader.readAllBytes(), StandardCharsets.UTF_8);
+            JSONObject jsonObject = new JSONObject(jsonString);
+            return jsonObject.getDouble("totalPrice");
+
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
-        return 9999;
     }
 }
