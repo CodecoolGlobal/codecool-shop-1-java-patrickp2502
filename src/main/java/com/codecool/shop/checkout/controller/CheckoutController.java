@@ -2,15 +2,10 @@ package com.codecool.shop.checkout.controller;
 
 import com.codecool.shop.config.RouteConfiguration;
 import com.codecool.shop.config.TemplateEngineUtil;
-import com.google.gson.JsonObject;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -38,7 +33,6 @@ public class CheckoutController extends HttpServlet {
 
 
     }
-
 
 
     private double fetchCartValue(String sessionId) {
