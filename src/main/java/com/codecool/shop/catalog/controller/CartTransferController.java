@@ -62,6 +62,7 @@ public class CartTransferController extends HttpServlet {
         HttpPost request = new HttpPost(RouteConfiguration.URI_CART_TRANSFER);
         HttpEntity entity = new StringEntity(payload, ContentType.APPLICATION_JSON);
         request.setEntity(entity);
+
         try {
 
             client.execute(request);
