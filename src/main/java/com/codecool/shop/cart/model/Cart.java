@@ -1,5 +1,6 @@
 package com.codecool.shop.cart.model;
 
+import com.codecool.shop.catalog.dao.model.Product;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -60,6 +61,9 @@ public class Cart {
         CartItem cartItem = findProductBy(id);
         int currentCount = cartItem.getCount();
         cartItem.setCount(currentCount + i);
+        if (cartItem.getCount() == 0) {
+            cart.remove(cartItem);
+        }
     }
 
     public void removeSingleProduct(int id) {
@@ -78,4 +82,13 @@ public class Cart {
                 .sum();
     }
 
+    public void setCount(int productId, int newCount) {
+        CartItem cartItem = findProductBy(productId);
+        if (newCount <= 0) {
+            cart.remove(cartItem);
+        } else {
+            cartItem.setCount(newCount);
+            cartItem.setTotalPrice(cartItem.getPrice() * newCount);
+        }
+    }
 }

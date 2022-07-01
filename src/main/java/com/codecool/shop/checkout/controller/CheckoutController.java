@@ -2,7 +2,6 @@ package com.codecool.shop.checkout.controller;
 
 import com.codecool.shop.config.RouteConfiguration;
 import com.codecool.shop.config.TemplateEngineUtil;
-import com.google.gson.JsonParser;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;

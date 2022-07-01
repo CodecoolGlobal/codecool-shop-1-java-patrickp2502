@@ -42,24 +42,27 @@
     </div>
 
     <div id="cartItems" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${cart.getCart()}">
+        <div class="col col-sm-12 col-md-6 col-lg-12" th:each="prod,iterStat : ${cart.getCart()}">
             <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff"
-                     th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
-                <div class="card-header">
-                    <h4 class="card-title" th:text="${prod.name}">Product name</h4>
-                </div>
-                <div class="card-body">
-                    <div class="card-text">
-                        <b class="lead" th:text="${prod.getPrice()}">100 USD</b>
-                        <b class="lead" th:text="${cart.getCountOfSingleItem(prod.getId())}">1</b>
-                        <b class="lead" th:text="${prod.getTotalPrice()}">100 USD</b>
-                        <input type="number" th:value="${cart.getCountOfSingleItem(prod.getId())}">
-
-                        <!-- Add button with remove functionality or count bar with lower and add (+ and -) -->
-
-
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-lg-2">
+                        <img class="img-thumbnail" src="http://placehold.it/400x250/000/fff"
+                             th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                     </div>
+                    <div class="col-sm-3 col-md-3 col-lg-2">
+                        <h4 class="card-title" th:text="${prod.name}">Product name</h4>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-4">
+                        <form action="/cart/show" method="post">
+                            <input type="number" name="count" th:value="${cart.getCountOfSingleItem(prod.getId())}">
+                            <input type="number" name="productId" th:value="${prod.getId()}" hidden>
+                            <button type="submit" >Click to update</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-4">
+                        <b class="lead" th:text="${prod.getTotalPrice()}">100 USD</b>
+                    </div>
+
                 </div>
             </div>
         </div>
